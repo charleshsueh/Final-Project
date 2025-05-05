@@ -1,0 +1,5 @@
+"0",""
+"0","# Plot cross-validation error"
+"0","plot(lasso_model$lambda, lasso_model$cvm, type = ""l"", "
+"0","     xlab = ""log(Lambda)"", ylab = ""Cross-Validation Error"", "
+"0","     main = ""LASSO CV Error vs Lambda"")"

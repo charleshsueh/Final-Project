@@ -1,0 +1,335 @@
+---
+title: "Time Series Analysis of Monthly Rainfall in Gangetic West Bengal (1901-2015)"
+subtitle: "⚔ Final Presentation"
+author: "Group 4  Jukun Zhang, Chun-Chien Hsueh"
+institute: "Rutgers University"
+output:
+  xaringan::moon_reader:
+    css: ["rutgers", "rutgers-fonts"]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+# Outline
+- **Introduction**
+  - Dataset: Monthly rainfall in Gangetic West Bengal (1901–2015)
+  - Objective: Analyze and forecast rainfall patterns
+- **Methodology**
+  - Data Preprocessing: Transformation and stationarity
+  - SARIMA: Traditional time series model for seasonal data
+  - Prophet: Advanced model for handling seasonality and trends
+- **Model Comparison**
+  - Evaluate performance using RMSE and MAE
+  - Discuss model suitability
+- **Conclusion**
+  - Summary of findings
+  - Future directions
+
+  
+---
+  
+# Introduction
+  
+## Dataset Description
+
+- **Name**: Monthly rainfall data for Gangetic West Bengal (1901-2015)
+- **Source**: [Kaggle](https://www.kaggle.com/datasets/rajanand/rainfall-in-india)  
+- **Structure**: 115 years × 12 months = 1380 data points
+- **Key Features**:
+  - Strong seasonal pattern (June–September monsoon peak)
+  - Potential long-term trends due to climate change
+- **Preprocessing**:
+  - Handle outliers: Negative values set to 0, >1000 mm set to median (for Prophet)
+  - Split into training (1901–2014) and test (2015) sets 
+  
+---
+
+# Introduction
+## Initial Observations
+
+- **Observation**: Stable mean, high variance fluctuation
+- **Feature**: Increased variability post-1960, suggests heteroskedasticity
+- **Challenge**: No clear long-term trend, seasonality needs further inspection
+
+```{r,, warning=FALSE, message=FALSE, echo=FALSE, out.width="100%"}
+library(here)
+knitr::include_graphics(here("photo","1.png"))
+```
+---
+
+# Introduction
+## Initial Observations
+
+- **ADF Test (Original Series)**:
+  - Statistic: -4.966773, p-value = 0.01
+  - Interpretation: p-value < 0.05, reject null hypothesis, series initially stationary, but further processing needed for seasonality.
+
+---
+# Introduction
+## Objective
+- **Objective**: Analyze and forecast rainfall patterns
+- **Methods**: SARIMA (traditional) and Prophet (modern)
+- **Application**: Support regional planning in Gangetic West Bengal such as agriculture, water resource management, and flood planning
+
+---
+# Methodology
+## Data Preprocessing (1)
+- **Format**: Wide to long format, starts Jan 1901, monthly frequency
+- **Data Points**: 1380 observations (115 years × 12 months)
+- **Observation**: Zero values present, extreme values exceed 600 mm
+
+```{r,, warning=FALSE, message=FALSE, echo=FALSE, out.width="100%"}
+library(here)
+knitr::include_graphics(here("photo","1.png"))
+```
+
+
+---
+# Methodology
+## Data Preprocessing (1)
+- **ADF Test (Original Series)**:
+  - Statistic: -4.966773, p-value = 0.01
+  - Interpretation: Series initially stationary, but variance fluctuation requires transformation.
+
+---
+
+# Methodology
+## Data Preprocessing (2) - Transformation
+- **Objective**: Stabilize variance, handle zero values
+- **Formula**: 
+```{r,, warning=FALSE, message=FALSE, echo=FALSE, out.width="50%"}
+library(here)
+knitr::include_graphics(here("photo","111.png"))
+```
+
+- **Result**: Reveals clear seasonal patterns, no long-term trend
+
+```{r,, warning=FALSE, message=FALSE, echo=FALSE, out.width="60%"}
+library(here)
+knitr::include_graphics(here("photo","2.png"))
+```
+
+---
+
+# Methodology
+## Data Preprocessing (3) - Stationarity
+- **Method**: First-order + seasonal differencing (lag 12)
+- **Test**: Augmented Dickey-Fuller (ADF) test
+- **Results**:
+  - First differencing: ADF = -31.579191, p-value = 0.01
+  - Seasonal differencing: ADF = -13.477301, p-value = 0.01
+  - Conclusion: Series is stationary, suitable for SARIMA modeling
+
+```{r,, warning=FALSE, message=FALSE, echo=FALSE, out.width="50%"}
+library(here)
+knitr::include_graphics(here("photo","3.png"))
+knitr::include_graphics(here("photo","6.png"))
+```
+---
+
+# Methodology
+## SARIMA Analysis (1) - Exploration
+- **Tools**: ACF, PACF analysis
+- **Observation**: Both ACF and PACF shows seasonal correlation (ACF lag 12, 24, 36 and PACF lag 12), potential seasonal AR(1) and MA(1) components
+
+```{r,, warning=FALSE, message=FALSE, echo=FALSE, out.width="50%"}
+library(here)
+knitr::include_graphics(here("photo","4.png"))
+knitr::include_graphics(here("photo","5.png"))
+```
+---
+# Methodology
+## SARIMA Analysis (1) - Exploration
+- **Tools**: EACF analysis
+- **Observation**: EACF suggests possible ARIMA(1,1,1) or ARIMA(0,1,1) models, with significant seasonal patterns at lag 12
+
+```{r,, warning=FALSE, message=FALSE, echo=FALSE, out.width="50%"}
+library(here)
+knitr::include_graphics(here("photo","eacf.png"))
+```
+---
+
+
+# Methodology
+## SARIMA Analysis (2) - Seasonal parameters
+
+```{r,, warning=FALSE, message=FALSE, echo=FALSE, out.width="50%"}
+library(here)
+knitr::include_graphics(here("photo","a.png"))
+knitr::include_graphics(here("photo","pa.png"))
+```
+
+---
+
+# Methodology
+## SARIMA Analysis (3) - Model Selection
+- **Model Selection**: Tested three SARIMA models
+  - Model 1: SARIMA(1,1,1)(0,0,0)_{12}, AIC = 4613.72
+  - Model 2: SARIMA(1,1,1)(1,1,0)_{12}, AIC = 4198.53
+  - Model 3: SARIMA(1,1,1)(0,1,1)_{12}, AIC = 3705.81
+
+
+```{r,, warning=FALSE, message=FALSE, echo=FALSE, out.width="33%"}
+library(here)
+knitr::include_graphics(here("photo","9.png"))
+knitr::include_graphics(here("photo","10.png"))
+knitr::include_graphics(here("photo","11.png"))
+```
+
+---
+
+# Methodology
+## SARIMA Analysis (4) - Best Model
+- **Best Model**: SARIMA(1,1,1)(0,1,1)_{12}
+- **Parameters**: AR1 = 0.0703, MA1 = -0.9904, SMA1 = -1.0000
+- **Metrics**: AIC = 3705.81, Ljung-Box p = 0.4521
+- **Conclusion**: Residuals resemble white noise, model fits well
+
+```{r,, warning=FALSE, message=FALSE, echo=FALSE, out.width="60%"}
+library(here)
+knitr::include_graphics(here("photo","11.png"))
+```
+
+---
+
+# Methodology
+## Prophet Introduction
+- **Tool**: Facebook Prophet (released 2017)
+- **Source**: Taylor and Letham (2017) in their article "Forecasting at Scale" (PeerJ Preprints)
+- **Purpose**: Designed for large-scale time series forecasting
+- **Core**: Decomposes into trend, seasonality, and holiday effects
+- **Modeling**: Uses piecewise linear or logistic trends with changepoints to capture non-linear growth
+- **Robustness**: Handles missing data and outliers automatically through a Bayesian framework
+- **Flexibility**: Users can adjust trend flexibility and seasonality strength by control parameters 
+- **Advantages**: Handles outliers, missing data, interpretable
+- **Reason for using**: Simple to apply and scalable for complex, real-world time series problems
+
+---
+
+# Methodology
+## Prophet Model Features
+- **Trend**: Piecewise linear/logistic, automatic changepoint detection
+- **Seasonality**: Fourier series modeling (yearly/weekly/daily)
+- **Parameters**: changepoint.prior.scale (trend flexibility)
+- **Others**: Holiday effects, Bayesian framework
+
+---
+
+# Methodology
+## Prophet Setup
+- **Data Prep**: ds/y format, no missing values
+- **Outlier Handling**: Negative values set to 0, >1000 mm set to median
+- **Setup**: Yearly seasonality (weekly/daily disabled)
+- **Parameters**: changepoint.prior.scale = 0.05
+
+---
+
+# Methodology
+## Prophet Training & Testing
+- **Train/Test**: 1901–2014 train, 2015 test (12 months)
+- **Performance**: RMSE = 100.46 mm, MAE = 62.17 mm
+- **Observation**: Underestimates monsoon peaks, clear seasonal pattern
+
+```{r,, warning=FALSE, message=FALSE, echo=FALSE, out.width="70%"}
+library(here)
+knitr::include_graphics(here("photo","12.png"))
+```
+
+---
+
+# Methodology
+## Prophet Decomposition
+- **Decomposition**: Trend + Yearly seasonality
+- **Trend**: Slight upward trend
+- **Seasonality**: Monsoon peak in July
+- **Advantage**: Strong visual interpretability
+
+```{r,, warning=FALSE, message=FALSE, echo=FALSE, out.width="60%"}
+library(here)
+knitr::include_graphics(here("photo","13.png"))
+```
+
+---
+
+# Methodology
+## Prophet Cross-Validation
+- **Method**: Sliding window cross-validation
+- **Setup**: 93 folds, initial window 7300 days, forecast 365 days
+- **Results**: Mean RMSE = 59.07 mm, MAE = 44.90 mm
+- **Advantage**: Preserves temporal order, evaluates stability
+
+---
+
+# Methodology
+## Prophet Residuals
+- **Residual Analysis**: No significant autocorrelation
+- **Test**: Ljung-Box p = 0.7451 (lag 24)
+- **Observation**: Residuals slightly positive skewed, may need parameter tuning
+
+```{r,, warning=FALSE, message=FALSE, echo=FALSE, out.width="65%"}
+library(here)
+knitr::include_graphics(here("photo","14.png"))
+```
+
+---
+
+# Model Comparison
+## Performance Metrics
+- **SARIMA**: RMSE = 102.7 mm, MAE = 52.0 mm
+- **Prophet**: RMSE = 100.5 mm, MAE = 62.2 mm
+- **Observation**: 
+  - SARIMA: Excels at monsoon peaks
+  - Prophet: Underestimates monsoon peaks, but high stability, robust
+  - Conclusion: Both models have distinct strengths
+
+| Model   | RMSE (mm) | MAE (mm) |
+|---------|-----------|----------|
+| Prophet | 100.5     | 62.2     |
+| SARIMA  | 102.7     | 52.0     |
+
+---
+# Model Comparison
+## Visual Insights
+
+```{r,, warning=FALSE, message=FALSE, echo=FALSE, out.width="70%"}
+library(here)
+knitr::include_graphics(here("photo","15.png"))
+```
+
+
+---
+
+# Model Comparison
+## Suitability
+- **SARIMA**: Ideal for high-precision research forecasting, requires careful preprocessing
+- **Prophet**: Suited for rapid deployment, interpretable, robust to outliers
+- **Choice**: Precision (SARIMA) vs. Robustness (Prophet)
+
+---
+
+# Conclusion
+## In brief ~
+- **SARIMA**: Lower MAE, precise in capturing monsoon peaks
+- **Prophet**: Lower RMSE, robust, interpretable
+- **Complementary**: Choose based on application scenario
+
+---
+
+# Conclusion
+## Future Directions
+- **Hybrid Models**: Combine SARIMA and Prophet
+- **External Covariates**: e.g., El Niño climate index
+- **Advanced Methods**: Machine learning (e.g., LSTM)
+
+---
+class: center, middle
+
+# Thank you!!!
+
+
+
+
+

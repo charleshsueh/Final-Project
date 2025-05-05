@@ -1,0 +1,1 @@
+"0","points(log(lasso_model$lambda.min), lasso_model$cvm[which.min(lasso_model$cvm)], col = ""red"", pch = 19)"
