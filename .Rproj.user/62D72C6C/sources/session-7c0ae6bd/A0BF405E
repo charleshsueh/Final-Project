@@ -1,27 +1,27 @@
 {
-    "id": "AAD64B84",
-    "path": "C:/Users/Charles/OneDrive/桌面/Final Project/script.Rmd",
-    "project_path": "script.Rmd",
+    "id": "A0BF405E",
+    "path": "C:/Users/Charles/OneDrive/桌面/Final Project/slides.Rmd",
+    "project_path": "slides.Rmd",
     "type": "r_markdown",
-    "hash": "403423699",
+    "hash": "1304705131",
     "contents": "",
     "dirty": false,
-    "created": 1746401556065.0,
+    "created": 1746427420875.0,
     "source_on_save": false,
-    "relative_order": 1,
+    "relative_order": 3,
     "properties": {
         "tempName": "Untitled1",
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "101,34",
-        "scrollLine": "110"
+        "cursorPosition": "46,62",
+        "scrollLine": "33"
     },
     "folds": "",
-    "lastKnownWriteTime": 1746427414,
+    "lastKnownWriteTime": 1746458895,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1746427414595,
+    "last_content_update": 1746458895366,
     "read_only": false,
     "read_only_alternatives": []
 }

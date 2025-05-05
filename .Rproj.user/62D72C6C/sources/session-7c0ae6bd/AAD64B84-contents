@@ -21,6 +21,7 @@ library(foreign)
 library(tidyverse)   
 library(here)
 library(mgcv)
+library(ds4ling)
 
 # 步驟 1: 讀取 ARFF 檔案並整理為 TIDY Data
 data <- read.arff(here("data","eye_state.arff")) # 替換為實際檔案路徑
@@ -70,12 +71,14 @@ data_selected <- data[, c(selected_channels, "eyeDetection", "eyeDetection_numer
 # 3. Linear Regression Modeling (Logistic Regression)
 log_model <- glm(eyeDetection ~ ., data = data_selected[, c(selected_channels, "eyeDetection")], family = binomial)
 summary(log_model)
+diagnosis(log_model)
 
 # 4. Bayesian Inference (Adjusted)
-bayes_model <- brm(eyeDetection ~ ., data = data_selected[, c(selected_channels, "eyeDetection")], 
+bayes_model <- brm(eyeDetection_numeric ~ ., data = data, 
                    family = bernoulli(), chains = 2, iter = 2000, warmup = 1000, 
                    control = list(adapt_delta = 0.95, max_treedepth = 12))
 summary(bayes_model)
+diagnosis(bayes_model)
 
 # 5. Model Diagnostics - Residuals Analysis
 # Residuals for logistic model

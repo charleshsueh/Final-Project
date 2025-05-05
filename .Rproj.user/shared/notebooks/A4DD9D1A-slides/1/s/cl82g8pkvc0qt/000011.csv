@@ -1,0 +1,2 @@
+"0","library(here)"
+"0","knitr::include_graphics(here(""photo"",""5.png""))"
