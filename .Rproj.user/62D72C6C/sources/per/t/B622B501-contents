@@ -4,7 +4,8 @@ This repository contains the final project for DS4Ling by Chun-chien Hsueh.
 The project explores machine learning models for classifying eye states (open or closed) using EEG data.
 
 ## Presentation slides
-You can view them [here](./slides/index.html).
+https://charleshsueh.github.io/Final-Project/
+
 
 ## Paper(Manuscript)
 The full report can be found in [`paper.pdf`](./paper.pdf).
