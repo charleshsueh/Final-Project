@@ -10,16 +10,21 @@ You can view them [here](./slides/index.html).
 The full report can be found in [`paper.pdf`](./paper.pdf).
 
 ## Project Structure
-├── manuscript/         
-│   └── paper.Rmd
-│   └── paper.pdf
-├── slides/             
-│   └── slides.Rmd
-│   └── slides.pdf
-├── code/
-├── data/
-├── figures/
-└── README.md
+```text
+FinalProject/
+├── manuscript/         # Final paper and source file
+│   ├── paper.Rmd       # R Markdown source of the report
+│   └── paper.pdf       # Compiled PDF of the final report
+│
+├── slides/             # Presentation slides
+│   ├── index.Rmd       # R Markdown source of the slides
+│   └── index.html      # Rendered HTML slides (e.g., xaringan or revealjs)
+│
+├── code/               # Scripts for data processing and modeling
+├── data/               # Raw or preprocessed EEG data
+├── figures/            # Visualizations and exported plots
+└── README.md           # Project overview and instructions
+```
 
 
 ## Models Used
