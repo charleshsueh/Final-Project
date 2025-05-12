@@ -1,0 +1,26 @@
+"0","library(knitr)"
+"0","library(kableExtra)"
+"2","Registered S3 methods overwritten by 'htmltools':
+  method               from         
+  print.html           tools:rstudio
+  print.shiny.tag      tools:rstudio
+  print.shiny.tag.list tools:rstudio
+"
+"2","Registered S3 method overwritten by 'rmarkdown':
+  method         from
+  print.paged_df     
+"
+"0","electrode_table <- data.frame("
+"0","  Electrode = c(""AF3"", ""F7"", ""F3"", ""FC5"", ""T7"", ""P7"", ""O1"", ""O2"", "
+"0","                ""P8"", ""T8"", ""FC6"", ""F4"", ""F8"", ""AF4""),"
+"0","  `Brain Region` = c("
+"0","    ""Left prefrontal cortex"", ""Left frontal lobe"", ""Left frontal cortex"","
+"0","    ""Left frontocentral area"", ""Left temporal lobe"", ""Left parietal lobe"","
+"0","    ""Left occipital lobe"", ""Right occipital lobe"", ""Right parietal lobe"","
+"0","    ""Right temporal lobe"", ""Right frontocentral area"", ""Right frontal cortex"","
+"0","    ""Right frontal lobe"", ""Right prefrontal cortex"""
+"0","  )"
+"0",")"
+"0",""
+"0","kable(electrode_table, caption = ""EEG Electrode Locations and Corresponding Brain Regions"")|>"
+"0","  kable_styling(latex_options = ""hold_position"")"

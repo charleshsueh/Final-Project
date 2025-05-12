@@ -1,0 +1,5 @@
+"0",""
+"0","  train_data_selected <- train_data %>% select(all_of(c(lasso_coef_df$Variable, ""eye_detection"")))"
+"0","  test_data_selected <- test_data %>% select(all_of(c(lasso_coef_df$Variable, ""eye_detection"")))"
+"0","  "
+"0",""

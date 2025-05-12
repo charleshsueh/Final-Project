@@ -1,0 +1,26 @@
+"0","library(knitr)"
+"0","library(kableExtra)"
+"2","
+載入套件：‘kableExtra’
+
+"
+"2","下列物件被遮斷自 ‘package:dplyr’:
+
+    group_rows
+
+"
+"0","model_metrics <- data.frame("
+"0","  Model = c(""Random Forest"", ""Logistic Regression"", ""SVM"", ""MLP"", ""kNN""),"
+"0","  Train_Accuracy = c(0.989, 0.757, 0.989, 0.994, 0.973),"
+"0","  Test_Accuracy = c(0.917, 0.750, 0.946, 0.922, 0.917),"
+"0","  AUC = c(0.974, 0.822, 0.982, 0.958, 0.982),"
+"0","  Precision = c(0.897, 0.774, 0.917, 0.913, 0.947),"
+"0","  Recall = c(0.941, 0.706, 0.980, 0.931, 0.882),"
+"0","  F1_Score = c(0.919, 0.738, 0.948, 0.922, 0.914)"
+"0",")"
+"0",""
+"0","kable("
+"0","  model_metrics,"
+"0","  caption = ""Comparison of Model Performance Metrics"""
+"0",")|>"
+"0","  kable_styling(latex_options = ""hold_position"")"

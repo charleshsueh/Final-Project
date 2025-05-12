@@ -1,0 +1,6 @@
+"0",""
+"0","  # 更新數據集，只保留選定的特徵"
+"0","  selected_features <- var_importance_df$Variable"
+"0","  train_data_selected <- train_data_selected %>% dplyr::select(all_of(c(selected_features, ""eye_detection"")))"
+"0","  test_data_selected <- test_data_selected %>% dplyr::select(all_of(c(selected_features, ""eye_detection"")))"
+"0",""

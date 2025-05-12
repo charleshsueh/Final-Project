@@ -44,6 +44,11 @@ output:
 - **Standardization**: Scaled predictor variables (Channels 1–14)
 - **Verification**: No missing values 
 
+```{r,, warning=FALSE, message=FALSE, echo=FALSE, out.width="90%"}
+library(here)
+knitr::include_graphics(here("photo","5.png"))
+```
+
 ---
 
 # Variable Selection
@@ -90,7 +95,7 @@ knitr::include_graphics(here("photo","2.png"))
 - **Convergence**:
   - All Rhat values = 1.00, indicating good convergence
   - Effective sample sizes (ESS) are high (e.g., 1399–2103)
-  - AIC: 19186
+
 - **Interpretation**:
   - Bayesian model confirms logistic regression findings with wider uncertainty intervals
   - Channels 4 and 6 have the largest negative effects, consistent with logistic model

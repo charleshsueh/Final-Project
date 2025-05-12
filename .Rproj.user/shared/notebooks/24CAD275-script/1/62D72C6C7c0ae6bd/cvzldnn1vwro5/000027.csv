@@ -1,1 +1,0 @@
-"0","abline(v = log(lasso_model$lambda.min), lty = 2, col = ""red"")  # Optimal lambda line"

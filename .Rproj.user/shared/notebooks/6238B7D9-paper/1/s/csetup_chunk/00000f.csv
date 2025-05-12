@@ -1,0 +1,6 @@
+"0","library(""papaja"")"
+"2","警告： 套件 ‘papaja’ 是用 R 版本 4.4.3 來建造的"
+"2","載入需要的套件：tinylabels
+"
+"2","警告： 套件 ‘tinylabels’ 是用 R 版本 4.4.3 來建造的"
+"0","r_refs(""r-references.bib"")"
