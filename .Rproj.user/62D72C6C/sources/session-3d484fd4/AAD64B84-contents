@@ -420,7 +420,6 @@ lasso_coef_plot
 ```
 
 
-
 ```{r random-forest}
 
 set.seed(1754)
@@ -739,7 +738,7 @@ legend("bottomright", legend = c(paste("Random Forest (AUC =", round(auc_rf, 3),
        col = c("purple", "orange", "blue", "red", "green"), lwd = 2)
 ```
 
-### 12.2 McNemar's 檢驗
+### 12.2 McNemar's Test
 
 ```{r mcnemar-test}
 # Build a vector of correct/wrong predictions
@@ -774,7 +773,7 @@ cat("McNemar's Test (SVM vs kNN): p-value =", mcnemar_svm_knn$p.value, "\n")
 cat("McNemar's Test (MLP vs kNN): p-value =", mcnemar_mlp_knn$p.value, "\n")
 ```
 
-## 13. 模型比較和學習曲線
+## 13. Model comparison and Learning Curves
 ```{r}
 # Model comparison table
 model_comparison <- data.frame(
