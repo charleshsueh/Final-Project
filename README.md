@@ -11,7 +11,7 @@ The full report can be found in [`paper.pdf`](./paper.pdf).
 ## Project Structure
 ```text
 FinalProject/
-├── manuscript/         # Final paper and source file
+├── paper/              # Final paper and source file
 │   ├── paper.Rmd       # R Markdown source of the report
 │   └── paper.pdf       # Compiled PDF of the final report
 │
