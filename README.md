@@ -6,7 +6,7 @@ The project explores machine learning models for classifying eye states (open or
 The full report can be found in [`paper.pdf`](./paper.pdf).
 
 ## Presentation slides
-https://charleshsueh.github.io/Final-Project/
+[`Slides for data description`](https://charleshsueh.github.io/Final-Project/)
 
 ## Project Structure
 ```text
