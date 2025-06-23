@@ -1,6 +1,0 @@
-"0","legend(""bottomright"", legend = c(paste(""Random Forest (AUC ="", round(auc_rf, 3), "")""),"
-"0","                                 paste(""Logistic Regression (AUC ="", round(auc_logistic, 3), "")""),"
-"0","                                 paste(""SVM (AUC ="", round(auc_svm, 3), "")""),"
-"0","                                 paste(""MLP (AUC ="", round(auc_mlp, 3), "")""),"
-"0","                                 paste(""kNN (AUC ="", round(auc_knn, 3), "")"")),"
-"0","       col = c(""purple"", ""orange"", ""blue"", ""red"", ""green""), lwd = 2)"

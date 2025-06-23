@@ -1,7 +1,0 @@
-"0","eye_detection_plot <- ggplot(data, aes(x = as.factor(eyeDetection), fill = as.factor(eyeDetection))) +"
-"0","  geom_bar() +"
-"0","  theme_minimal() +"
-"0","  labs(title = ""Distribution of Eye Detection"", x = ""Eye Detection"", y = ""Count"") +"
-"0","  scale_fill_manual(values = c(""0"" = ""red"", ""1"" = ""blue""))"
-"0",""
-"0","eye_detection_plot"

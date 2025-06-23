@@ -1,3 +1,0 @@
-"0","cor_matrix <- cor(data %>% select(-eyeDetection))"
-"0","corrplot(cor_matrix, method = ""color"", type = ""upper"", order = ""hclust"","
-"0","         tl.col = ""black"", tl.srt = 45, addCoef.col = ""black"")"
